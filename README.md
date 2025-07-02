@@ -37,18 +37,15 @@ Edge AI devices are limited in compute, memory, and power. **Argus** predicts th
 
 ## File Structure
 
-| File/Folder                          | Description                                         |
-|--------------------------------------|-----------------------------------------------------|
-| `Clever_blip_model.py`               | BLIP model wrapper for workload prediction          |
-| `Clever_clip_model.py`               | CLIP model wrapper for workload prediction          |
-| `blip-model.ipynb`                   | Jupyter notebook: BLIP-based experiments            |
-| `clip-model.ipynb`                   | Jupyter notebook: CLIP-based experiments            |
-| `vcr-blip-model.ipynb`               | Jupyter notebook: BLIP on VCR dataset               |
-| `blip_embedding_extractor.py`        | Script: extract BLIP embeddings                     |
-| `blip_embedding_extractor_flicker.py`| Script: BLIP embeddings for Flickr30k               |
-| `clip_embedding_extractor.py`        | Script: extract CLIP embeddings                     |
-| `clip_embedding_extractor_flicker.py`| Script: CLIP embeddings for Flickr30k               |
-| `README.md`                          | Project documentation                               |
+| File/Folder                | Description                                                  |
+|---------------------------|--------------------------------------------------------------|
+| `Clever_clip&blip/`       | Folder for Clever dataset experiments with CLIP & BLIP models|
+| `Coco_vlip&clip/`         | Folder for COCO dataset experiments with VLIP & CLIP models  |
+| `Flickr30k_clip&blip/`    | Folder for Flickr30k dataset with CLIP & BLIP models         |
+| `VCR_clip&blip/`          | Folder for VCR dataset experiments with CLIP & BLIP models   |
+| `vgenome_blip&clip/`      | Folder for Visual Genome dataset with BLIP & CLIP models     |
+| `README.md`               | Project documentation                                        |
+
 
 ---
 
