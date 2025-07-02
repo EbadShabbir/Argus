@@ -40,7 +40,7 @@ Edge AI devices are limited in compute, memory, and power. **Argus** predicts th
 | File/Folder                | Description                                                  |
 |---------------------------|--------------------------------------------------------------|
 | `Clever_clip&blip/`       | Folder for Clever dataset experiments with CLIP & BLIP models|
-| `Coco_vlip&clip/`         | Folder for COCO dataset experiments with VLIP & CLIP models  |
+| `Coco_vlip&clip/`         | Folder for COCO dataset experiments with CLIP & CLIP models  |
 | `Flickr30k_clip&blip/`    | Folder for Flickr30k dataset with CLIP & BLIP models         |
 | `VCR_clip&blip/`          | Folder for VCR dataset experiments with CLIP & BLIP models   |
 | `vgenome_blip&clip/`      | Folder for Visual Genome dataset with BLIP & CLIP models     |
