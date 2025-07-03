@@ -7,10 +7,10 @@ from transformers import AutoProcessor, BlipModel
 import torch
 
 # Set paths
-image_dir = "D:\\VLM_gautam\\vgenome_dataset\\visualgenome\\img"
-label_file = "D:\\VLM_gautam\\vgenome_dataset\\visualgenome\\objects.json\\objects.json"
-output_embeddings = "D:\\VLM_gautam\\vgenome_dataset\\blip_embeddings.npy"
-output_labels = "D:\\VLM_gautam\\vgenome_dataset\\blip_labels.npy"
+image_dir = "img"
+label_file = "objects.json"
+output_embeddings = "blip_embeddings.npy"
+output_labels = "blip_labels.npy"
 
 # Load the BLIP model and processor
 device = "cuda" if torch.cuda.is_available() else "cpu"
