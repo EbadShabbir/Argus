@@ -5,10 +5,10 @@ from transformers import CLIPProcessor, CLIPModel
 import torch
 
 # Set new paths
-image_dir = "D:\\VLM_gautam\\flicker\\archive\\Images"
-label_file = "D:\\VLM_gautam\\flicker\\archive\\captions.txt"
-output_embeddings = "D:\\VLM_gautam\\flicker\\archive\\clip_embeddings.npy"
-output_labels = "D:\\VLM_gautam\\flicker\\archive\\labels.npy"
+image_dir = "Images"
+label_file = "captions.txt"
+output_embeddings = "clip_embeddings.npy"
+output_labels = "labels.npy"
 
 # Load the CLIP model and processor
 device = "cuda" if torch.cuda.is_available() else "cpu"
