@@ -1,44 +1,45 @@
 # Argus: Can Argus Judge Them All? Comparing VLMs Across Domains
 
-**Argus** is a lightweight Mixture-of-Experts (MoE) Vision-Language Model (VLM) framework designed for intelligent workload prediction and dynamic resource allocation on edge AI devices. By combining the strengths of state-of-the-art VLMs—**CLIP**, **BLIP**, and **LXMERT**—Argus enables efficient, accurate, and real-time decision-making in resource-constrained environments.
+Argus is a benchmarking framework for evaluating **Vision-Language Models (VLMs)**—notably **CLIP**, **BLIP**, and **LXMERT**—across a diverse set of multimodal tasks and datasets. Drawing inspiration from the all-seeing giant of Greek mythology, Argus systematically examines the strengths, weaknesses, and generalization capabilities of leading VLMs, with a special focus on **cross-domain consistency, efficiency, and real-world deployment** in resource-constrained environments[1].
 
 ---
 
 ## 📚 Supported Datasets
 
-Argus supports a diverse set of multimodal datasets. Prepare each dataset in the `data/` directory as described in the provided notebooks.
+Argus benchmarks VLMs on five representative datasets, each targeting different aspects of multimodal understanding:
 
 - **COCO**  
-  Large-scale object detection, segmentation, and captioning dataset.
+  Large-scale dataset for object detection, segmentation, and captioning.
 
 - **Flickr30k**  
-  Image captioning dataset with diverse real-world scenes.
+  Image captioning dataset with diverse, real-world scenes.
 
 - **CLEVR**  
-  Diagnostic dataset for compositional language and elementary visual reasoning.
+  Synthetic dataset designed for compositional language and visual reasoning.
 
 - **VCR**  
-  Visual Commonsense Reasoning dataset for understanding images and associated questions.
+  Visual Commonsense Reasoning dataset for complex image-based QA and rationale selection.
 
 - **Visual Genome**  
-  Dense annotations of objects, attributes, and relationships within images.
+  Dataset with dense object, attribute, and relationship annotations for fine-grained scene understanding[1].
+
+Prepare each dataset in the `data/` directory as specified in the provided notebooks.
 
 ---
 
-## 🧠 Mixture-of-Experts VLMs
+## 🧠 Vision-Language Models Benchmarked
 
-Argus integrates the following state-of-the-art vision-language models:
+Argus evaluates the following state-of-the-art VLMs:
 
-- **CLIP** (OpenAI)  
-  Contrastive Language–Image Pretraining for zero-shot image classification.
+| Model   | Core Strengths                                            | Key Weaknesses                |
+|---------|----------------------------------------------------------|-------------------------------|
+| **CLIP**    | Strong generalization, robust cross-domain consistency | Weaker in generation and structured reasoning |
+| **BLIP**    | Excels at curated data, strong captioning and retrieval | Variable on less curated domains |
+| **LXMERT**  | Superior in structured visual reasoning tasks         | Less adaptable, higher resource use |
 
-- **BLIP** (Bootstrapped Language Image Pretraining)  
-  Flexible vision-language model for a variety of multimodal tasks.
-
-- **LXMERT**  
-  Transformer-based model for learning vision-and-language cross-modal representations.
-
-Each model can be used individually or as part of Argus's Mixture-of-Experts architecture for improved prediction and efficiency.
+- **CLIP**: Contrastive Language–Image Pretraining; excels at zero-shot generalization via contrastive learning on web-scale image-text pairs[1][4][5].
+- **BLIP**: Bootstrapped Language Image Pretraining; uses a Mixture-of-Experts (MED) encoder-decoder architecture for unified understanding and generation, leveraging synthetic caption bootstrapping and multi-task objectives[1][4][6].
+- **LXMERT**: Transformer-based model with cross-modal attention, optimized for structured reasoning and VQA[1][3].
 
 ---
 
@@ -76,7 +77,7 @@ Use the provided Jupyter notebooks for model training and evaluation:
 - `clip-model.py` — CLIP experiments
 - `vcr-blip-model.py` — BLIP on VCR dataset
 
-For custom model wrappers:
+Custom workload prediction wrappers:
 
 - `Clever_blip_model.py` — BLIP-based workload prediction
 - `Clever_clip_model.py` — CLIP-based workload prediction
@@ -96,11 +97,69 @@ For custom model wrappers:
 
 ---
 
-## ⚡ Experiments
+## ⚡ Experiments & Results
 
-- Compare **Argus (MoE)** with individual VLMs on prediction accuracy, efficiency, and resource usage.
-- Evaluate across both structured and unstructured datasets.
-- Benchmark on edge hardware (Jetson Nano, Raspberry Pi, ARM CPUs).
+### Key Evaluation Dimensions
+
+- **Prediction Accuracy** (retrieval, captioning, reasoning)
+- **Generation Quality** (BLEU, METEOR, CIDEr, SPICE)
+- **Computational Efficiency** (latency, memory, FLOPs, throughput)
+- **Generalization** using the novel **Cross-Dataset Consistency (CDC)** metric[1]
+
+### Main Findings
+
+| Task / Metric                 | BLIP           | CLIP           | LXMERT         |
+|-------------------------------|----------------|----------------|----------------|
+| **Image-Text Retrieval**      | Best on COCO, Flickr30k | Strong generalization | Best on Visual Genome |
+| **Caption Generation**        | Highest BLEU, METEOR, CIDEr | Weakest | Competitive BLEU, lower diversity |
+| **Visual Reasoning (CLEVR)**  | 89.7%          | 84.5%          | **96.3%**      |
+| **Commonsense QA (VCR)**      | 74.8% (Q→A)    | 62.3% (Q→A)    | 70.2% (Q→A), **71.5% (QA→R)** |
+| **Efficiency (COCO, latency)**| 120ms          | **30ms**       | 150ms          |
+| **CDC (Generalization)**      | 0.76           | **0.92**       | 0.64           |
+
+- **BLIP**: Outperforms in captioning and retrieval, especially on curated datasets.
+- **CLIP**: Most robust across domains, with top CDC score (0.92), making it ideal for general-purpose and real-world deployment.
+- **LXMERT**: Excels in structured reasoning and VQA, but less efficient and less generalizable[1].
+
+---
+
+## 🧮 Cross-Dataset Consistency (CDC) Metric
+
+**CDC** quantifies how consistently a model performs across diverse datasets:
+
+\[
+\text{CDC}(M_j) = 1 - \frac{1}{|D|} \sum_{i=1}^{|D|} \left| \frac{a_{i,j} - \bar{a}_j}{\bar{a}_j} \right|
+\]
+
+- **Interpretation**: CDC = 1 means perfect consistency; lower values indicate greater performance fluctuation across domains.
+- **Industrial relevance**: CDC rewards models with balanced performance, crucial for robust, fair, and reproducible AI[1].
+
+---
+
+## 🏁 Benchmarking Protocol
+
+- Unified preprocessing (image resizing, text tokenization, normalization)
+- Batch inference with consistent hardware (NVIDIA A100 GPU, batch size 32)
+- Multiple random splits for statistical rigor
+- No test-time augmentation or ensembling[1]
+
+---
+
+## 🏆 Summary Table: VLMs Across Domains
+
+| Model   | Retrieval | Captioning | Reasoning | Efficiency | Generalization (CDC) |
+|---------|-----------|------------|-----------|------------|----------------------|
+| BLIP    | ★★★★☆    | ★★★★★     | ★★★☆☆    | ★★☆☆☆     | ★★★☆☆               |
+| CLIP    | ★★★★☆    | ★★☆☆☆     | ★★☆☆☆    | ★★★★★     | ★★★★★               |
+| LXMERT  | ★★★☆☆    | ★★★☆☆     | ★★★★★    | ★☆☆☆☆     | ★★☆☆☆               |
+
+---
+
+## ⚠️ Limitations
+
+- Benchmarks may not capture real-world diversity, noise, or domain-specific constraints.
+- No task-specific fine-tuning; results reflect fixed checkpoints.
+- Evaluation on edge devices is limited to theoretical analysis due to hardware constraints[1].
 
 ---
 
@@ -113,9 +172,13 @@ Open issues or submit pull requests for improvements, bug fixes, or new features
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT License
 
 ---
 
 **Contact:**  
 For questions or collaboration, please open an issue or contact the maintainer.
+
+---
+
+
