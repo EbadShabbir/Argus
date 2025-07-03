@@ -126,11 +126,11 @@ Custom workload prediction wrappers:
 ## 🧮 Cross-Dataset Consistency (CDC) Metric
 
 **CDC** quantifies how consistently a model performs across diverse datasets:
-
+$
 \[
 \text{CDC}(M_j) = 1 - \frac{1}{|D|} \sum_{i=1}^{|D|} \left| \frac{a_{i,j} - \bar{a}_j}{\bar{a}_j} \right|
 \]
-
+$
 - **Interpretation**: CDC = 1 means perfect consistency; lower values indicate greater performance fluctuation across domains.
 - **Industrial relevance**: CDC rewards models with balanced performance, crucial for robust, fair, and reproducible AI[1].
 
