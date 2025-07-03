@@ -51,8 +51,7 @@ Edge AI devices are limited in compute, memory, and power. **Argus** predicts th
 
 ## Installation
 
-git clone https://github.com/EbadShabbir//argus-edge-ai.git
-cd argus-edge-ai
+
 pip install -r requirements.txt
 
 **Dependencies:**  
