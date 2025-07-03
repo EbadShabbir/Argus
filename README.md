@@ -1,4 +1,4 @@
-# Argus: Lightweight VLM for Intelligent Workload Prediction and Resource Allocation in Edge AI
+# Argus: Can Argus Judge Them All? Comparing VLMs Across Domains
 
 **Argus** is a lightweight Mixture-of-Experts (MoE) Vision-Language Model (VLM) framework for intelligent workload prediction and dynamic resource allocation on edge AI devices. By combining the strengths of state-of-the-art VLMs (CLIP, BLIP, LXMERT), Argus enables efficient, accurate, and real-time decision-making for resource-constrained environments.
 
