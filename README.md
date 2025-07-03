@@ -1,6 +1,6 @@
 # Argus: Can Argus Judge Them All? Comparing VLMs Across Domains
 
-Argus is a benchmarking framework for evaluating **Vision-Language Models (VLMs)**—notably **CLIP**, **BLIP**, and **LXMERT**—across a diverse set of multimodal tasks and datasets. Drawing inspiration from the all-seeing giant of Greek mythology, Argus systematically examines the strengths, weaknesses, and generalization capabilities of leading VLMs, with a special focus on **cross-domain consistency, efficiency, and real-world deployment** in resource-constrained environments[1].
+Argus is a benchmarking framework for evaluating **Vision-Language Models (VLMs)**—notably **CLIP**, **BLIP**, and **LXMERT**—across a diverse set of multimodal tasks and datasets. Drawing inspiration from the all-seeing giant of Greek mythology, Argus systematically examines the strengths, weaknesses, and generalization capabilities of leading VLMs, with a special focus on **cross-domain consistency, efficiency, and real-world deployment** in resource-constrained environments.
 
 ---
 
@@ -38,8 +38,8 @@ Argus evaluates the following state-of-the-art VLMs:
 | **LXMERT**  | Superior in structured visual reasoning tasks         | Less adaptable, higher resource use |
 
 - **CLIP**: Contrastive Language–Image Pretraining; excels at zero-shot generalization via contrastive learning on web-scale image-text pairs[1][4][5].
-- **BLIP**: Bootstrapped Language Image Pretraining; uses a Mixture-of-Experts (MED) encoder-decoder architecture for unified understanding and generation, leveraging synthetic caption bootstrapping and multi-task objectives[1][4][6].
-- **LXMERT**: Transformer-based model with cross-modal attention, optimized for structured reasoning and VQA[1][3].
+- **BLIP**: Bootstrapped Language Image Pretraining; uses a Mixture-of-Experts (MED) encoder-decoder architecture for unified understanding and generation, leveraging synthetic caption bootstrapping and multi-task objectives.
+- **LXMERT**: Transformer-based model with cross-modal attention, optimized for structured reasoning and VQA.
 
 ---
 
@@ -104,7 +104,7 @@ Custom workload prediction wrappers:
 - **Prediction Accuracy** (retrieval, captioning, reasoning)
 - **Generation Quality** (BLEU, METEOR, CIDEr, SPICE)
 - **Computational Efficiency** (latency, memory, FLOPs, throughput)
-- **Generalization** using the novel **Cross-Dataset Consistency (CDC)** metric[1]
+- **Generalization** using the novel **Cross-Dataset Consistency (CDC)** metric.
 
 ### Main Findings
 
@@ -119,7 +119,7 @@ Custom workload prediction wrappers:
 
 - **BLIP**: Outperforms in captioning and retrieval, especially on curated datasets.
 - **CLIP**: Most robust across domains, with top CDC score (0.92), making it ideal for general-purpose and real-world deployment.
-- **LXMERT**: Excels in structured reasoning and VQA, but less efficient and less generalizable[1].
+- **LXMERT**: Excels in structured reasoning and VQA, but less efficient and less generalizable.
 
 ---
 
@@ -149,7 +149,7 @@ CDC highlights and rewards models that deliver *balanced* performance, which is 
 - Unified preprocessing (image resizing, text tokenization, normalization)
 - Batch inference with consistent hardware (NVIDIA A100 GPU, batch size 32)
 - Multiple random splits for statistical rigor
-- No test-time augmentation or ensembling[1]
+- No test-time augmentation or ensembling.
 
 ---
 
@@ -167,7 +167,7 @@ CDC highlights and rewards models that deliver *balanced* performance, which is 
 
 - Benchmarks may not capture real-world diversity, noise, or domain-specific constraints.
 - No task-specific fine-tuning; results reflect fixed checkpoints.
-- Evaluation on edge devices is limited to theoretical analysis due to hardware constraints[1].
+- Evaluation on edge devices is limited to theoretical analysis due to hardware constraints.
 
 ---
 
