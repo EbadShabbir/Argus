@@ -130,7 +130,7 @@ Custom workload prediction wrappers:
 $$\text{CDC}(M_j) = 1 - \frac{1}{|D|} \sum_{i=1}^{|D|} \left| \frac{a_{i,j} - \bar{a}_j}{\bar{a}_j} \right|$$
 
 **Where:**
--$$ \( M_j \)$$: The model being evaluated
+- $$\( M_j \)$$: The model being evaluated
 - $$\( D \)$$: The set of datasets
 - $$\( a_{i,j} \)$$: The accuracy (or relevant metric) of model \( M_j \) on dataset \( i \)
 - $$\( \bar{a}_j \)$$: The mean performance of \( M_j \) across all datasets
