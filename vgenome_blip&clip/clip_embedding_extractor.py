@@ -45,10 +45,10 @@ from transformers import CLIPProcessor, CLIPModel
 import torch
 
 # Set paths
-image_dir = "D:\\VLM_gautam\\vgenome_dataset\\visualgenome\\img"
-label_file = "D:\\VLM_gautam\\vgenome_dataset\\visualgenome\\objects.json\\objects.json"
-output_embeddings = "D:\\VLM_gautam\\vgenome_dataset\\clip_embeddings.npy"
-output_labels = "D:\\VLM_gautam\\vgenome_dataset\\labels.npy"
+image_dir = "img"
+label_file = "objects.json"
+output_embeddings = "clip_embeddings.npy"
+output_labels = "labels.npy"
 
 # Load the CLIP model and processor
 device = "cuda" if torch.cuda.is_available() else "cpu"
