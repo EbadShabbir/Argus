@@ -21,7 +21,7 @@ Argus benchmarks VLMs on five representative datasets, each targeting different 
   Visual Commonsense Reasoning dataset for complex image-based QA and rationale selection.
 
 - **Visual Genome**  
-  Dataset with dense object, attribute, and relationship annotations for fine-grained scene understanding[1].
+  Dataset with dense object, attribute, and relationship annotations for fine-grained scene understanding.
 
 Prepare each dataset in the `data/` directory as specified in the provided notebooks.
 
@@ -37,7 +37,7 @@ Argus evaluates the following state-of-the-art VLMs:
 | **BLIP**    | Excels at curated data, strong captioning and retrieval | Variable on less curated domains |
 | **LXMERT**  | Superior in structured visual reasoning tasks         | Less adaptable, higher resource use |
 
-- **CLIP**: Contrastive Language–Image Pretraining; excels at zero-shot generalization via contrastive learning on web-scale image-text pairs[1][4][5].
+- **CLIP**: Contrastive Language–Image Pretraining; excels at zero-shot generalization via contrastive learning on web-scale image-text pairs.
 - **BLIP**: Bootstrapped Language Image Pretraining; uses a Mixture-of-Experts (MED) encoder-decoder architecture for unified understanding and generation, leveraging synthetic caption bootstrapping and multi-task objectives.
 - **LXMERT**: Transformer-based model with cross-modal attention, optimized for structured reasoning and VQA.
 
